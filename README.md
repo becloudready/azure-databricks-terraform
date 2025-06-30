@@ -1,5 +1,5 @@
 
-# Azure Databricks DR/BCP Deployment (Terraform)
+# Azure Databricks DR/BCP Deployment
 
 This Terraform configuration deploys:
 
