@@ -1,6 +1,11 @@
 
 # Azure Databricks DR/BCP Deployment
 
+Goal of this repo is to develop Databricks DR automation based on best practice suggested by various DB articles.
+
+![image](https://github.com/user-attachments/assets/048836f1-447e-42dc-b50c-90285859f2a9)
+
+
 This Terraform configuration deploys:
 
 - A Databricks workspace (Premium tier)
