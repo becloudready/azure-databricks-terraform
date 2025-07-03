@@ -1,14 +1,19 @@
+
+
 resource "databricks_notebook" "nightly_job_notebook" {
   path     = "/Shared/nightly_task"
   language = "PYTHON"
-  content_base64 = base64encode(file("${path.module}/../../notebooks/nightly_forecast_job.py"))
+  content_base64 = base64encode(file(var.notebook_file_path))
 }
 
 resource "databricks_job" "nightly_serverless_job" {
   name = "Nightly Python Job - Serverless"
 
-  notebook_task {
-    notebook_path = databricks_notebook.nightly_job_notebook.path
+  task {
+    task_key = "nightly-task"
+    notebook_task {
+      notebook_path = databricks_notebook.nightly_job_notebook.path
+    }
   }
 
   schedule {
@@ -17,17 +22,12 @@ resource "databricks_job" "nightly_serverless_job" {
     pause_status           = "UNPAUSED"
   }
 
-  new_cluster {
-    serverless = true                     # ✅ This enables serverless compute
-    autotermination_minutes = 15
-  }
-
   max_retries     = 1
   timeout_seconds = 3600
 
   tags = {
-    "team"        = "platform"
-    "env"         = "prod"
-    "schedule"    = "nightly"
+    team     = "platform"
+    env      = "prod"
+    schedule = "nightly"
   }
 }
