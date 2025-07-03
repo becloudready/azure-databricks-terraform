@@ -1,9 +1,10 @@
-Sure! Here's a clean and minimal **GitHub-style `README.md`** for your Terraform repo:
 
----
+# Azure Databricks DR/BCP Deployment
 
-```markdown
-# Azure Databricks DR/BCP Deployment (Terraform)
+Goal of this repo is to develop Databricks DR automation based on best practice suggested by various DB articles.
+
+![image](https://github.com/user-attachments/assets/048836f1-447e-42dc-b50c-90285859f2a9)
+
 
 This Terraform configuration deploys:
 
