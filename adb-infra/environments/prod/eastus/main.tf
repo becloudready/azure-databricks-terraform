@@ -26,6 +26,7 @@ locals {
   }
 }
 
+
 # 👉 Use the network module
 module "network" {
   source              = "../../../modules/network"
@@ -49,6 +50,7 @@ module "adb_workspace" {
   private_nsg_assoc_id            = module.network.private_nsg_assoc_id
   tags                            = local.tags
 }
+
 
 output "databricks_host" {
   value = "https://${module.adb_workspace.workspace_url}/"
