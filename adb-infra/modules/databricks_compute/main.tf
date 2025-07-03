@@ -9,8 +9,8 @@ terraform {
 
 # Configure the Databricks provider
 provider "databricks" {
-  host = "https://adb-3689651931809132.12.azuredatabricks.net"
-  token = "dapicd7097df420466578bfb2b3c234e3178-3"
+  host = "https://adb-XXXXXX.azuredatabricks.net"
+  token = "<PAT>"
 }
 
 
