@@ -23,13 +23,51 @@ This Terraform configuration deploys:
 - Azure CLI (`az login`)
 - Sufficient Azure permissions to create resources
 
+```
+az account set --subscription "<your-subscription-name-or-id>"
+
+```
+
+## Create resource group
+
+```
+az group create \
+  --name databricks-demo \
+  --location eastus
+
+```
+
+```
+az storage account create \
+  --name bcrterraformstatefiles \
+  --resource-group databricks-demo \
+  --location eastus \
+  --sku Standard_LRS \
+  --kind StorageV2 \
+  --allow-blob-public-access false
+
+
+az storage account keys list \
+  --account-name bcrterraformstatefiles \
+  --resource-group databricks-demo \
+  --query "[0].value" \
+  -o tsv
+
+az storage container create \
+  --name tfstate \
+  --account-name bcrterraformstatefiles \
+  --account-key <YOUR_STORAGE_ACCOUNT_KEY>
+
+
+```
+
 ---
 
-## 🚀 How to Deploy
+## 🚀 How to Deploy the Infrastructure
 
 ```bash
 # Step into the environment folder
-cd environments/prod/eastus
+cd infra/prod/eastus
 
 # Initialize the Terraform project
 terraform init
@@ -43,6 +81,21 @@ terraform apply -var-file="terraform.tfvars"
 ** Wait for 5 minutes before login to the workspace **
 
 ---
+
+##  How to Deploy the Jobs/Code
+
+```bash
+
+export DATABRICKS_HOST="https://<Databricks-instance-id>.cloud.databricks.com"
+export DATABRICKS_TOKEN="<YOUR-PAT>"
+
+cd /apps/dev
+terraform init
+terraform plan -var-file="terraform.tfvars"
+terraform apply --auto-approve -var-file="terraform.tfvars"
+
+```
+
 
 ## 🧹 To Destroy
 

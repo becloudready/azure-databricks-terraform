@@ -1,13 +1,13 @@
 
 
 resource "databricks_notebook" "nightly_job_notebook" {
-  path     = "/Shared/nightly_task"
+  path     = "/Shared/nightly_tasks"
   language = "PYTHON"
   content_base64 = base64encode(file(var.notebook_file_path))
 }
 
 resource "databricks_job" "nightly_serverless_job" {
-  name = "Nightly Python Job - Serverless"
+  name = "Nightly SKU Alert Job - Serverless"
 
   task {
     task_key = "nightly-task"

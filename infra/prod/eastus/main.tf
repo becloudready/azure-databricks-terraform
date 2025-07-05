@@ -1,10 +1,3 @@
-variable "region" {
-  type = string
-}
-
-variable "resource_group_name" {
-  type = string
-}
 
 resource "random_string" "naming" {
   special = false
@@ -29,7 +22,7 @@ locals {
 
 # 👉 Use the network module
 module "network" {
-  source              = "../../../modules/network"
+  source              = "../../modules/network"
   resource_group_name = var.resource_group_name
   location            = var.region
   prefix              = local.prefix
@@ -38,7 +31,7 @@ module "network" {
 
 # 👉 Use the databricks_workspace module
 module "adb_workspace" {
-  source                          = "../../../modules/databricks_workspace"
+  source                          = "../../modules/databricks_workspace"
   workspace_name                  = "${local.prefix}-workspace"
   resource_group_name             = var.resource_group_name
   region                          = var.region
@@ -51,10 +44,6 @@ module "adb_workspace" {
   tags                            = local.tags
 }
 
-module "nightly_serverless_job" {
-  source = "../../../modules/databricks_jobs"
-  notebook_file_path = "${path.module}/../../notebooks/nightly_forecast_job.py"
-}
 
 
 output "databricks_host" {
