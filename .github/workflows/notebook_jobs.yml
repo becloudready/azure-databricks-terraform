@@ -28,4 +28,4 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform apply --auto-approve -var="notebook_file_path=../../notebooks/sku_alert.py"
+        run: terraform apply --auto-approve -var="notebook_file_path=../../notebooks/nightly_sku_alert_job.py"
