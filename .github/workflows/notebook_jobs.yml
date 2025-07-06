@@ -16,6 +16,10 @@ jobs:
         working-directory: apps/dev
 
     steps:
+    
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Debug working directory
         run: |
           echo "PWD inside apps/dev:"
@@ -24,8 +28,6 @@ jobs:
           ls -la
           echo "Going one level up to verify root layout:"
           ls -la ../..
-      - name: Checkout repo
-        uses: actions/checkout@v3
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
