@@ -1,0 +1,1 @@
+notebook_file_path = "/../../notebooks/nightly_sku_alert_job.py"
