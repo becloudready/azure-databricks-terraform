@@ -3,7 +3,7 @@
 resource "databricks_notebook" "nightly_job_notebook" {
   path     = "/Shared/nightly_tasks"
   language = "PYTHON"
-  content_base64 = base64encode(file(var.notebook_file_path))
+  content_base64 = base64encode(file("../../notebooks/nightly_sku_alert_job.py"))
 }
 
 
