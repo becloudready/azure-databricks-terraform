@@ -5,6 +5,13 @@ Goal of this repo is to develop Databricks DR automation based on best practice 
 
 ![image](https://github.com/user-attachments/assets/048836f1-447e-42dc-b50c-90285859f2a9)
 
+---
+
+DevOps Automation workflow for Multi-region DR
+
+<img width="1402" height="821" alt="image" src="https://github.com/user-attachments/assets/6a5737f4-6475-4d5c-8989-4deb8c55b41e" />
+
+
 
 This Terraform configuration deploys:
 
