@@ -125,3 +125,9 @@ After deployment, you'll get:
 * Adjust the `terraform.tfvars` to match region and resource group for each deployment.
 * Use additional folders like `westus` for DR/secondary regions.
 
+---
+
+## 📚 MSSQL ➜ Delta Pipeline Use Cases
+
+Looking to extend this deployment with data ingestion pipelines? See [Databricks Pipelines for MSSQL ➜ Delta Lake](docs/mssql-to-delta-pipeline-usecases.md) for detailed scenarios, architectural guidance, and next steps that build on the Terraform modules and notebooks included in this repository.
+
